@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EstudioService implements IEstudioService{
@@ -21,6 +22,11 @@ public class EstudioService implements IEstudioService{
     @Override
     public List<Estudio> verEstudios() {
         return estudioRepository.findAll();
+    }
+
+    @Override
+    public Optional<Estudio> verEstudio(Long id) {
+        return estudioRepository.findById(id);
     }
 
     @Override

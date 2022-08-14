@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProyectoService implements IProyectoService{
@@ -20,6 +21,11 @@ public class ProyectoService implements IProyectoService{
     @Override
     public List<Proyecto> verProyectos() {
         return proyectoRepository.findAll();
+    }
+
+    @Override
+    public Optional<Proyecto> verProyecto(Long id) {
+        return proyectoRepository.findById(id);
     }
 
     @Override

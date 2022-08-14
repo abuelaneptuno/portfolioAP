@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UsuarioService implements IUsuarioService{
@@ -16,6 +17,11 @@ public class UsuarioService implements IUsuarioService{
     @Override
     public List<Usuario> verUsuarios() {
         return usuarioRepository.findAll();
+    }
+
+
+    public Optional<Usuario> verUsuario(Long id) {
+        return usuarioRepository.findById(id);
     }
 
     @Override

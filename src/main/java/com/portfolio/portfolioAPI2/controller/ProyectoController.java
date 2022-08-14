@@ -1,5 +1,6 @@
 package com.portfolio.portfolioAPI2.controller;
 
+import com.portfolio.portfolioAPI2.model.Estudio;
 import com.portfolio.portfolioAPI2.model.Proyecto;
 import com.portfolio.portfolioAPI2.service.ProyectoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/proyectos")
@@ -30,6 +32,12 @@ public class ProyectoController {
     @ResponseBody
     public List<Proyecto> verProyectos(){
         return proyectoService.verProyectos();
+    }
+
+    @GetMapping("/{id}")
+    @ResponseBody
+    public Optional<Proyecto> verProyecto(@PathVariable Long id) {
+        return proyectoService.verProyecto(id);
     }
 
     @PutMapping("/editar")

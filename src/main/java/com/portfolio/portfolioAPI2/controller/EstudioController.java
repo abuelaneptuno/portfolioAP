@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/estudios")
@@ -23,6 +24,12 @@ public class EstudioController {
     @ResponseBody
     public List<Estudio> verEstudios(){
         return estudioService.verEstudios();
+    }
+
+    @GetMapping("/{id}")
+    @ResponseBody
+    public Optional<Estudio> verEstudio(@PathVariable Long id) {
+        return estudioService.verEstudio(id);
     }
 
     @PutMapping("/editar")

@@ -5,9 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Getter @Setter
 @NoArgsConstructor
@@ -16,9 +14,14 @@ import javax.persistence.Table;
 @Table(name="educacion")
 public class Estudio {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public Long idestudio;
 
     public String titulo;
     public String institucion;
     public String estado;
+
+    @JoinColumn(name = "usuario_id")
+    @ManyToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
+    private Usuario usuario;
 }

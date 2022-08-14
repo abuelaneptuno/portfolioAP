@@ -3,10 +3,10 @@ package com.portfolio.portfolioAPI2.controller;
 import com.portfolio.portfolioAPI2.model.Usuario;
 import com.portfolio.portfolioAPI2.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/usuarios")
@@ -31,6 +31,12 @@ public class UsuarioController {
     @ResponseBody
     public List<Usuario> verUsuarios(){
         return usuarioService.verUsuarios();
+    }
+
+    @GetMapping("/{id}")
+    @ResponseBody
+    public Optional<Usuario> verUsuario(@PathVariable Long id) {
+        return usuarioService.verUsuario(id);
     }
 
     @DeleteMapping("/eliminar/{id}")
